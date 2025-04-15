@@ -15,9 +15,6 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -54,8 +51,8 @@ public class WelcomeActivity extends AppCompatActivity {
         layouts = new int[]{
                 R.layout.welcome_slide_one,
                 R.layout.welcome_slide_two,
-                R.layout.welcome_slide_three,
-                R.layout.welcome_slide_four};
+                R.layout.welcome_slide_three
+        };
 
         addBottomDots(0);
 

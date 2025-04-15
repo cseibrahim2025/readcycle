@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/bg_screen3">
+    android:background="@color/color_background">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -14,17 +14,17 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="250dp"
-            app:lottie_rawRes="@raw/loading"
             android:layout_height="250dp"
             android:foregroundGravity="center"
+            app:lottie_rawRes="@raw/deliver"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Category-Based Listings"
-            android:textColor="@android:color/white"
+            android:text="Friend-to-Friend Swaps"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -34,9 +34,9 @@
             android:layout_marginTop="20dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="All books are neatly organized into categories. Makes browsing smooth and efficient."
+            android:text="Built for students by students. Trade books with friends and classmates in your circle."
             android:textAlignment="center"
-            android:textColor="@android:color/white"
+            android:textColor="@color/gray"
             android:textSize="15sp" />
 
     </LinearLayout>

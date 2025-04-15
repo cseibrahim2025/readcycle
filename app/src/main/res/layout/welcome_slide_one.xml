@@ -14,9 +14,9 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="250dp"
-            app:lottie_rawRes="@raw/reading_book"
             android:layout_height="250dp"
             android:foregroundGravity="center"
+            app:lottie_rawRes="@raw/reading_book"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"/>
 
