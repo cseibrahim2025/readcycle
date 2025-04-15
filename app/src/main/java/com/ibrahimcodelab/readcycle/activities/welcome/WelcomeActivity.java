@@ -63,19 +63,9 @@ public class WelcomeActivity extends AppCompatActivity {
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeLayout();
-            }
-        });
+        btnNext.setOnClickListener(v -> changeLayout());
 
-        btnSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotoHomePage();
-            }
-        });
+        btnSkip.setOnClickListener(v -> gotoHomePage());
     }
 
     public void changeLayout() {
