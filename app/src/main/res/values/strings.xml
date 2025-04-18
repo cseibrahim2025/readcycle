@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Read Cycle</string>
+    <string name="txt_already_have_account">Already have an account? <font color="#53B175">click here.</font></string>
+    <string name="txt_dont_have_account">Don\'t have an account? <font color="#53B175">Signup.</font></string>
+    <string name="txt_privacy_policy">By continuing you agree to our <font color="#53B175">Terms of Service and Privacy Policy.</font></string>
 </resources>

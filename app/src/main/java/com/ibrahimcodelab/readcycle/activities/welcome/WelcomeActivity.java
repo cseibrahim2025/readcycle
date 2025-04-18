@@ -20,6 +20,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.ibrahimcodelab.readcycle.R;
 import com.ibrahimcodelab.readcycle.activities.MainActivity;
+import com.ibrahimcodelab.readcycle.activities.auth.LoginActivity;
 import com.ibrahimcodelab.readcycle.utils.UserSession;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -75,7 +76,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void gotoHomePage() {
         userSession.setFirstTime(false);
-        startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+        startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
         finish();
     }
 

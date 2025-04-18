@@ -5,12 +5,17 @@
     android:background="@color/color_background"
     android:layout_height="fill_parent">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/blur_background_auth" />
+
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:layout_centerInParent="true"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/book_loading_black"/>
+        app:lottie_rawRes="@raw/loading"
+        android:alpha=".6"/>
 
 </RelativeLayout>

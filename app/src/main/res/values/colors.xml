@@ -361,4 +361,6 @@
         <item>@color/dot_dark_screen3</item>
     </array>
 
+    <color name="color_white_overlay">#8CFEFEFE</color>
+
 </resources>
