@@ -83,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:hint="Email (Optional)"
+            android:hint="Email"
             android:imeOptions="actionNext"
             android:maxLines="1" />
 
