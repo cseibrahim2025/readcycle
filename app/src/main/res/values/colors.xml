@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_primary">#26BF76</color>
+    <color name="color_primary">#4FAD69</color>
     <color name="black">#20262B</color>
     <color name="gray">#445562</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color_background">#FDFDFD</color>
+
+    <color name="color_theme">#71CC8A</color>
 
     <color name="bg_screen1">#3498db</color>
     <color name="bg_screen2">#e74c3c</color>

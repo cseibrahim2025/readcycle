@@ -8,13 +8,25 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="This is main page"
+    <include
+        android:id="@+id/include"
+        layout="@layout/blur_background_auth" />
+
+    <me.ibrahimsn.lib.SmoothBottomBar
+        android:id="@+id/bottom_nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:paddingHorizontal="@dimen/_16sdp"
+        app:backgroundColor="@color/color_theme"
+        app:iconSize="@dimen/_18sdp"
+        app:iconTint="@color/white"
+        app:iconTintActive="@color/white"
+        app:indicatorRadius="@dimen/_12sdp"
+        app:itemPadding="@dimen/_8sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:menu="@menu/menu"
+        app:sideMargins="@dimen/_12sdp"
+        app:textColor="@color/white"
+        app:textSize="@dimen/_11ssp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
