@@ -63,6 +63,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
             android:hint="Email / Phone"
+            android:text="ibrahim@gmail.com"
             android:imeOptions="actionNext"
             android:maxLines="1" />
 
@@ -85,6 +86,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
             android:hint="Password"
+            android:text="ibrahim1234"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
             android:maxLines="1" />

@@ -12,6 +12,13 @@
         android:id="@+id/include"
         layout="@layout/blur_background_auth" />
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_view" />
+
     <me.ibrahimsn.lib.SmoothBottomBar
         android:id="@+id/bottom_nav_view"
         android:layout_width="match_parent"

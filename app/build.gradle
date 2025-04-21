@@ -54,4 +54,5 @@ dependencies {
 
     //Bottom Navigation
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
 }

@@ -9,7 +9,7 @@ import com.ibrahimcodelab.readcycle.dao.LoginRequest;
 import com.ibrahimcodelab.readcycle.dao.RegisterRequest;
 import com.ibrahimcodelab.readcycle.models.UserResponse;
 import com.ibrahimcodelab.readcycle.networking.ApiClient;
-import com.ibrahimcodelab.readcycle.networking.AuthApi;
+import com.ibrahimcodelab.readcycle.networking.ApiService;
 import com.ibrahimcodelab.readcycle.utils.Constants;
 
 import retrofit2.Call;
@@ -18,15 +18,15 @@ import retrofit2.Response;
 
 public class AuthenticationService {
 
-    private final AuthApi authApi;
+    private final ApiService apiService;
 
     public AuthenticationService() {
-        this.authApi = ApiClient.getClient(Constants.BASE_URL).create(AuthApi.class);
+        this.apiService = ApiClient.getClient(Constants.BASE_URL).create(ApiService.class);
     }
 
     public void register(Context context, RegisterRequest registerRequest,
                          AuthenticationServiceCallback authenticationServiceCallback) {
-        authApi.register(registerRequest).enqueue(new Callback<UserResponse>() {
+        apiService.register(registerRequest).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(@NonNull Call<UserResponse> call, @NonNull Response<UserResponse> response) {
                 Toast.makeText(context, "response code:" + response.code(), Toast.LENGTH_SHORT).show();
@@ -48,7 +48,7 @@ public class AuthenticationService {
 
     public void login(Context context, LoginRequest loginRequest,
                       AuthenticationServiceCallback authenticationServiceCallback) {
-        authApi.login(loginRequest).enqueue(new Callback<UserResponse>() {
+        apiService.login(loginRequest).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if (response.isSuccessful()) {
