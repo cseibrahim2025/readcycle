@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.ibrahimcodelab.readcycle.dao.LoginRequest;
 import com.ibrahimcodelab.readcycle.dao.RegisterRequest;
 import com.ibrahimcodelab.readcycle.models.UserResponse;
 import com.ibrahimcodelab.readcycle.networking.ApiClient;
@@ -23,7 +24,8 @@ public class AuthenticationService {
         this.authApi = ApiClient.getClient(Constants.BASE_URL).create(AuthApi.class);
     }
 
-    public void register(Context context, RegisterRequest registerRequest, AuthenticationServiceCallback authenticationServiceCallback){
+    public void register(Context context, RegisterRequest registerRequest,
+                         AuthenticationServiceCallback authenticationServiceCallback) {
         authApi.register(registerRequest).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(@NonNull Call<UserResponse> call, @NonNull Response<UserResponse> response) {
@@ -40,6 +42,27 @@ public class AuthenticationService {
             @Override
             public void onFailure(@NonNull Call<UserResponse> call, @NonNull Throwable t) {
                 authenticationServiceCallback.onFailure();
+            }
+        });
+    }
+
+    public void login(Context context, LoginRequest loginRequest,
+                      AuthenticationServiceCallback authenticationServiceCallback) {
+        authApi.login(loginRequest).enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                if (response.isSuccessful()) {
+                    String token = response.body().getToken();
+                    Toast.makeText(context, "login is successful", Toast.LENGTH_SHORT).show();
+                    authenticationServiceCallback.onSuccess(token);
+                } else {
+                    Toast.makeText(context, "login failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Toast.makeText(context, "login failed", Toast.LENGTH_SHORT).show();
             }
         });
     }

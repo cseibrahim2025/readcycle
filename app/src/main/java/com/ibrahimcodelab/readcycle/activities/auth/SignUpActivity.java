@@ -50,6 +50,8 @@ public class SignUpActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(String token) {
                     Toast.makeText(SignUpActivity.this, "sign up is successful", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                    finish();
                 }
 
                 @Override
