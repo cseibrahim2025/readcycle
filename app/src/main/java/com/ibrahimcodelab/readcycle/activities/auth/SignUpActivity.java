@@ -3,7 +3,7 @@ package com.ibrahimcodelab.readcycle.activities.auth;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,8 @@ import java.util.Objects;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    public static final String TAG = "SignUpActivity";
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,35 +32,31 @@ public class SignUpActivity extends AppCompatActivity {
             finish();
         });
 
-        findViewById(R.id.btn_signup).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String fullName = Objects.requireNonNull(((TextInputLayout) findViewById(R.id.til_full_name)).getEditText()).getText().toString();
-                String email = Objects.requireNonNull(((TextInputLayout) findViewById(R.id.til_email)).getEditText()).getText().toString();
-                String password = Objects.requireNonNull(((TextInputLayout) findViewById(R.id.til_password)).getEditText()).getText().toString();
+        findViewById(R.id.btn_signup).setOnClickListener(v -> {
+            String fullName = Objects.requireNonNull(((TextInputLayout) findViewById(R.id.til_full_name)).getEditText()).getText().toString();
+            String email = Objects.requireNonNull(((TextInputLayout) findViewById(R.id.til_email)).getEditText()).getText().toString();
+            String password = Objects.requireNonNull(((TextInputLayout) findViewById(R.id.til_password)).getEditText()).getText().toString();
 
-                RegisterRequest registerRequest = new RegisterRequest(
-                        fullName,
-                        "North Western University",
-                        "CSE",
-                        "2025",
-                        email,
-                        password
-                );
+            RegisterRequest registerRequest = new RegisterRequest(
+                    fullName,
+                    "North Western University",
+                    "CSE",
+                    "2025",
+                    email,
+                    password
+            );
 
-                new AuthenticationService().register(registerRequest, new AuthenticationServiceCallback() {
-                    @Override
-                    public void onSuccess(String token) {
+            new AuthenticationService().register(SignUpActivity.this, registerRequest, new AuthenticationServiceCallback() {
+                @Override
+                public void onSuccess(String token) {
+                    Toast.makeText(SignUpActivity.this, "sign up is successful", Toast.LENGTH_SHORT).show();
+                }
 
-                    }
-
-                    @Override
-                    public void onFailure() {
-
-                    }
-                });
-            }
+                @Override
+                public void onFailure() {
+                    Toast.makeText(SignUpActivity.this, "failed to register user!!!", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
-
     }
 }

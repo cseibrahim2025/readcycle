@@ -1,5 +1,8 @@
 package com.ibrahimcodelab.readcycle.services;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 
 import com.ibrahimcodelab.readcycle.dao.RegisterRequest;
@@ -20,10 +23,11 @@ public class AuthenticationService {
         this.authApi = ApiClient.getClient(Constants.BASE_URL).create(AuthApi.class);
     }
 
-    public void register(RegisterRequest registerRequest, AuthenticationServiceCallback authenticationServiceCallback){
+    public void register(Context context, RegisterRequest registerRequest, AuthenticationServiceCallback authenticationServiceCallback){
         authApi.register(registerRequest).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(@NonNull Call<UserResponse> call, @NonNull Response<UserResponse> response) {
+                Toast.makeText(context, "response code:" + response.code(), Toast.LENGTH_SHORT).show();
                 if (response.isSuccessful()) {
                     assert response.body() != null;
                     String token = response.body().getToken();
