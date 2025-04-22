@@ -1,5 +1,6 @@
 package com.ibrahimcodelab.readcycle.adapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,15 @@ import java.util.List;
 public class SwapRequestAdapter extends RecyclerView.Adapter<SwapRequestAdapter.ViewHolder> {
 
     private final List<SwapResponse.SwapRequestData> swapRequests;
+    private final OnItemClickListener listener;
 
-    public SwapRequestAdapter(List<SwapResponse.SwapRequestData> swapRequests) {
+    public interface OnItemClickListener {
+        void onItemClick(SwapResponse.SwapRequestData item);
+    }
+
+    public SwapRequestAdapter(List<SwapResponse.SwapRequestData> swapRequests, OnItemClickListener listener) {
         this.swapRequests = swapRequests;
+        this.listener = listener;
     }
 
     @NonNull
@@ -29,19 +36,11 @@ public class SwapRequestAdapter extends RecyclerView.Adapter<SwapRequestAdapter.
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         SwapResponse.SwapRequestData request = swapRequests.get(position);
-
-        String bookTitle = request.getBookRequested().getTitle();
-        String requesterName = request.getRequester().getName();
-        String status = request.getStatus();
-
-        holder.titleOne.setText(bookTitle);
-        holder.titleTwo.setText(request.getBookOffered().getTitle());
-        holder.requester.setText("Requested by: " + requesterName);
-        holder.offerer.setText("Offered by: " + request.getBookOffered().getUser().getName());
-        holder.status.setText("Status: " + status);
+        holder.bind(request, listener);
     }
 
     @Override
@@ -50,15 +49,25 @@ public class SwapRequestAdapter extends RecyclerView.Adapter<SwapRequestAdapter.
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView titleOne, titleTwo, requester, offerer, status;
+        TextView title1, title2, status, user, offeredBy;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            titleOne = itemView.findViewById(R.id.txt_book_title_1);
-            titleTwo = itemView.findViewById(R.id.txt_book_title_2);
-            requester = itemView.findViewById(R.id.txt_requested_by);
-            offerer = itemView.findViewById(R.id.txt_offered_by);
+            title1 = itemView.findViewById(R.id.txt_book_title_1);
+            title2 = itemView.findViewById(R.id.txt_book_title_2);
+            user = itemView.findViewById(R.id.txt_requested_by);
+            offeredBy = itemView.findViewById(R.id.txt_offered_by);
             status = itemView.findViewById(R.id.txt_status);
+        }
+
+        public void bind(SwapResponse.SwapRequestData item, OnItemClickListener listener) {
+            title1.setText(item.getBookOffered().getTitle());
+            title2.setText(item.getBookRequested().getTitle());
+            user.setText("Requested by: " + item.getRequester().getName());
+            offeredBy.setText("Offered by: " + item.getBookOffered().getUser().getName());
+            status.setText("Status: " + item.getStatus());
+
+            itemView.setOnClickListener(v -> listener.onItemClick(item));
         }
     }
 }

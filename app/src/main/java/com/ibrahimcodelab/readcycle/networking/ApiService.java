@@ -3,9 +3,10 @@ package com.ibrahimcodelab.readcycle.networking;
 import com.ibrahimcodelab.readcycle.dao.BookRequest;
 import com.ibrahimcodelab.readcycle.dao.LoginRequest;
 import com.ibrahimcodelab.readcycle.dao.RegisterRequest;
+import com.ibrahimcodelab.readcycle.dao.SwapRequest;
+import com.ibrahimcodelab.readcycle.dao.SwapStatusUpdateRequest;
 import com.ibrahimcodelab.readcycle.models.Category;
 import com.ibrahimcodelab.readcycle.models.CategoryResponse;
-import com.ibrahimcodelab.readcycle.dao.SwapRequest;
 import com.ibrahimcodelab.readcycle.models.SwapResponse;
 import com.ibrahimcodelab.readcycle.models.UserResponse;
 
@@ -45,5 +46,9 @@ public interface ApiService {
 
     @GET("swaps")
     Call<ApiResponse<List<SwapResponse.SwapRequestData>>> getAllSwapRequests();
+
+    @Headers("Accept: application/json")
+    @POST("swaps/update-status")
+    Call<ApiResponse<Void>> updateSwapStatus(@Body SwapStatusUpdateRequest request);
 
 }

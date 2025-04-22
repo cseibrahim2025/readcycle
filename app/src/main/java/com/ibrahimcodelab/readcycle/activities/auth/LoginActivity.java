@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onSuccess(String token) {
 
                     CookieBar.build(LoginActivity.this)
-                            .setDuration(1500)
+                            .setDuration(700)
                             .setTitle("Success")
                             .setMessage("You are successfully logged in")
                             .setBackgroundColor(R.color.color_theme)
