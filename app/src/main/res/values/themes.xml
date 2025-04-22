@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Base.Theme.ReadCycle" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="background">@color/color_background</item>
+        <item name="android:statusBarColor">@color/color_theme</item>
     </style>
 
     <style name="Theme.ReadCycle" parent="Base.Theme.ReadCycle" />

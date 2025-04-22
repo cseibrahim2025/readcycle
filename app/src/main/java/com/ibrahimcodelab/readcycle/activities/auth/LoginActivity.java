@@ -2,7 +2,6 @@ package com.ibrahimcodelab.readcycle.activities.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +12,8 @@ import com.ibrahimcodelab.readcycle.activities.MainActivity;
 import com.ibrahimcodelab.readcycle.dao.LoginRequest;
 import com.ibrahimcodelab.readcycle.services.AuthenticationService;
 import com.ibrahimcodelab.readcycle.services.AuthenticationServiceCallback;
+
+import org.aviran.cookiebar2.CookieBar;
 
 import java.util.Objects;
 
@@ -37,13 +38,31 @@ public class LoginActivity extends AppCompatActivity {
             new AuthenticationService().login(LoginActivity.this, new LoginRequest(email, password), new AuthenticationServiceCallback() {
                 @Override
                 public void onSuccess(String token) {
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    finish();
+
+                    CookieBar.build(LoginActivity.this)
+                            .setDuration(1500)
+                            .setTitle("Success")
+                            .setMessage("You are successfully logged in")
+                            .setBackgroundColor(R.color.color_theme)
+                            .setAnimationIn(android.R.anim.slide_in_left, android.R.anim.slide_in_left)
+                            .setAnimationOut(android.R.anim.slide_out_right, android.R.anim.slide_out_right)
+                            .setCookieListener(dismissType -> {
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                finish();
+                            })
+                            .show();
                 }
 
                 @Override
                 public void onFailure() {
-
+                    CookieBar.build(LoginActivity.this)
+                            .setDuration(1500)
+                            .setTitle("Error")
+                            .setMessage("failed to logged in")
+                            .setBackgroundColor(R.color.red_600)
+                            .setAnimationIn(android.R.anim.slide_in_left, android.R.anim.slide_in_left)
+                            .setAnimationOut(android.R.anim.slide_out_right, android.R.anim.slide_out_right)
+                            .show();
                 }
             });
         });
