@@ -64,7 +64,7 @@ public class SwapRequestAdapter extends RecyclerView.Adapter<SwapRequestAdapter.
             title1.setText(item.getBookOffered().getTitle());
             title2.setText(item.getBookRequested().getTitle());
             user.setText("Requested by: " + item.getRequester().getName());
-            offeredBy.setText("Offered by: " + item.getBookOffered().getUser().getName());
+            offeredBy.setText("Offered to: " + item.getBookRequested().getUser().getName());
             status.setText("Status: " + item.getStatus());
 
             itemView.setOnClickListener(v -> listener.onItemClick(item));

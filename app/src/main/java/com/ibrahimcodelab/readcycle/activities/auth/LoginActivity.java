@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
             new AuthenticationService().login(LoginActivity.this, new LoginRequest(email, password), new AuthenticationServiceCallback() {
                 @Override
                 public void onSuccess(String token) {
-
                     CookieBar.build(LoginActivity.this)
                             .setDuration(700)
                             .setTitle("Success")

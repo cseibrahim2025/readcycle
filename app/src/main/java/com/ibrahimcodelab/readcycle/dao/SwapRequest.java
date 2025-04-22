@@ -7,10 +7,10 @@ public class SwapRequest {
     @SerializedName("requester_id")
     private int requesterId;
 
-    @SerializedName("requested_book_id")
+    @SerializedName("book_requested_id")
     private int requestedBookId;
 
-    @SerializedName("offered_book_id")
+    @SerializedName("book_offered_id")
     private int offeredBookId;
 
     public SwapRequest(int requesterId, int requestedBookId, int offeredBookId) {
