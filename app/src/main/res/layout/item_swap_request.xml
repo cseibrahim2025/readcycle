@@ -1,0 +1,75 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_8sdp"
+    android:backgroundTint="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_12sdp">
+
+        <!-- Book Swap Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/txt_book_title_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Your Book"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@color/color_theme"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/img_swap_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="12dp"
+                android:src="@drawable/ic_swap" />
+
+            <TextView
+                android:id="@+id/txt_book_title_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Requested Book"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@color/color_theme"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Request Info Section -->
+        <TextView
+            android:id="@+id/txt_requested_by"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="4dp"
+            android:text="Requested by"
+            android:textAppearance="?attr/textAppearanceBody2"/>
+
+        <TextView
+            android:id="@+id/txt_offered_by"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="4dp"
+            android:text="Offered by"
+            android:textAppearance="?attr/textAppearanceBody2"/>
+
+        <TextView
+            android:id="@+id/txt_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:textAppearance="?attr/textAppearanceBody2" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

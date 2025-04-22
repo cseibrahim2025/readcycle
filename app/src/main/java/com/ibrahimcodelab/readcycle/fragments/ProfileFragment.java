@@ -1,5 +1,6 @@
 package com.ibrahimcodelab.readcycle.fragments;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -13,10 +14,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.ibrahimcodelab.readcycle.R;
+import com.ibrahimcodelab.readcycle.activities.MainActivity;
+import com.ibrahimcodelab.readcycle.activities.auth.LoginActivity;
 import com.ibrahimcodelab.readcycle.dao.BookRequest;
 import com.ibrahimcodelab.readcycle.models.Category;
 import com.ibrahimcodelab.readcycle.networking.ApiClient;
@@ -24,8 +28,11 @@ import com.ibrahimcodelab.readcycle.networking.ApiResponse;
 import com.ibrahimcodelab.readcycle.networking.ApiService;
 import com.ibrahimcodelab.readcycle.utils.Constants;
 
+import org.aviran.cookiebar2.CookieBar;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -61,7 +68,7 @@ public class ProfileFragment extends Fragment {
         spinnerCategory.setAdapter(categoryAdapter);
 
         AlertDialog dialog = builder.create();
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
 
         fetchCategories();
@@ -96,7 +103,7 @@ public class ProfileFragment extends Fragment {
 
         call.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<ApiResponse<List<Category>>> call, Response<ApiResponse<List<Category>>> response) {
+            public void onResponse(@NonNull Call<ApiResponse<List<Category>>> call, @NonNull Response<ApiResponse<List<Category>>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     categories = response.body().getData();
                     List<String> categoryNames = new ArrayList<>();
@@ -110,7 +117,7 @@ public class ProfileFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ApiResponse<List<Category>>> call, Throwable t) {
+            public void onFailure(@NonNull Call<ApiResponse<List<Category>>> call, @NonNull Throwable t) {
                 Toast.makeText(requireContext(), "Failed to load categories", Toast.LENGTH_SHORT).show();
             }
         });
@@ -123,11 +130,18 @@ public class ProfileFragment extends Fragment {
         ApiService apiService = ApiClient.getClient(Constants.BASE_URL).create(ApiService.class);
 
         Call<ApiResponse<Object>> call = apiService.createBook(bookRequest);
-        call.enqueue(new Callback<ApiResponse<Object>>() {
+        call.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<ApiResponse<Object>> call, Response<ApiResponse<Object>> response) {
+            public void onResponse(@NonNull Call<ApiResponse<Object>> call, @NonNull Response<ApiResponse<Object>> response) {
                 if (response.isSuccessful() && response.body() != null && response.body().isStatus()) {
-                    Toast.makeText(requireContext(), "Book added!", Toast.LENGTH_SHORT).show();
+                    CookieBar.build(requireActivity())
+                            .setDuration(1500)
+                            .setTitle("Success")
+                            .setMessage("Book added successfully")
+                            .setBackgroundColor(R.color.color_theme)
+                            .setAnimationIn(android.R.anim.slide_in_left, android.R.anim.slide_in_left)
+                            .setAnimationOut(android.R.anim.slide_out_right, android.R.anim.slide_out_right)
+                            .show();
                 } else {
                     Toast.makeText(requireContext(), "Failed to add book", Toast.LENGTH_SHORT).show();
                 }
@@ -136,7 +150,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onFailure(Call<ApiResponse<Object>> call, Throwable t) {
                 t.printStackTrace();
-                // Network error
                 Toast.makeText(requireContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
