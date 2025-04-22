@@ -50,8 +50,9 @@ public class AuthenticationService {
                       AuthenticationServiceCallback authenticationServiceCallback) {
         apiService.login(loginRequest).enqueue(new Callback<UserResponse>() {
             @Override
-            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+            public void onResponse(@NonNull Call<UserResponse> call, @NonNull Response<UserResponse> response) {
                 if (response.isSuccessful()) {
+                    assert response.body() != null;
                     String token = response.body().getToken();
                     Toast.makeText(context, "login is successful", Toast.LENGTH_SHORT).show();
                     authenticationServiceCallback.onSuccess(token);
