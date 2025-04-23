@@ -12,6 +12,7 @@ import com.ibrahimcodelab.readcycle.activities.MainActivity;
 import com.ibrahimcodelab.readcycle.dao.LoginRequest;
 import com.ibrahimcodelab.readcycle.services.AuthenticationService;
 import com.ibrahimcodelab.readcycle.services.AuthenticationServiceCallback;
+import com.ibrahimcodelab.readcycle.utils.UserSession;
 
 import org.aviran.cookiebar2.CookieBar;
 
@@ -25,6 +26,15 @@ public class LoginActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
+        try {
+            if(!new UserSession(this).getUser().getUser().getName().isEmpty()){
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                finish();
+            }
+        } catch (Exception exception){
+            exception.printStackTrace();
+        }
+
         findViewById(R.id.txt_dont_have_account).setOnClickListener(v -> {
             startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             finish();
@@ -37,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
             new AuthenticationService().login(LoginActivity.this, new LoginRequest(email, password), new AuthenticationServiceCallback() {
                 @Override
-                public void onSuccess(String token) {
+                public void onSuccess() {
                     CookieBar.build(LoginActivity.this)
                             .setDuration(700)
                             .setTitle("Success")

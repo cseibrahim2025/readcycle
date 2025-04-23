@@ -48,7 +48,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             new AuthenticationService().register(SignUpActivity.this, registerRequest, new AuthenticationServiceCallback() {
                 @Override
-                public void onSuccess(String token) {
+                public void onSuccess() {
                     Toast.makeText(SignUpActivity.this, "sign up is successful", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
                     finish();

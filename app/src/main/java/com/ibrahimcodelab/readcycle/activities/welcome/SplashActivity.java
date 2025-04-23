@@ -9,6 +9,8 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ibrahimcodelab.readcycle.R;
+import com.ibrahimcodelab.readcycle.activities.auth.LoginActivity;
+import com.ibrahimcodelab.readcycle.utils.UserSession;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
@@ -20,9 +22,10 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(SplashActivity.this, WelcomeActivity.class);
+            Class intentClass = new UserSession(this).isFirstTime() ? WelcomeActivity.class : LoginActivity.class;
+            Intent intent = new Intent(SplashActivity.this, intentClass);
             startActivity(intent);
             finish();
-        }, 3000);
+        }, 1500);
     }
 }

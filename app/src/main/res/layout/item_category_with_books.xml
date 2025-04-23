@@ -1,20 +1,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tvCategoryName"
         android:textStyle="bold"
-        android:textSize="16sp"
+        android:textSize="@dimen/_12ssp"
+        android:text="Category"
+        android:fontFamily="@font/kalpurush"
+        android:paddingHorizontal="@dimen/_4sdp"
+        android:paddingVertical="@dimen/_1sdp"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="#DF2634"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginVertical="@dimen/_4sdp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBooks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
+        android:paddingHorizontal="@dimen/_4sdp"
         android:nestedScrollingEnabled="false"/>
+
 </LinearLayout>

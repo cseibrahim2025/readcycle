@@ -3,22 +3,34 @@ package com.ibrahimcodelab.readcycle.models;
 import com.google.gson.annotations.SerializedName;
 
 public class UserResponse {
+
+    @SerializedName("user")
     private User user;
+
+    @SerializedName("token")
     private String token;
 
     public static class User {
+
+        @SerializedName("id")
         private int id;
 
         @SerializedName("student_id")
         private String studentId;
 
+        @SerializedName("name")
         private String name;
 
         @SerializedName("university_name")
         private String universityName;
 
+        @SerializedName("department")
         private String department;
+
+        @SerializedName("year")
         private String year;
+
+        @SerializedName("email")
         private String email;
 
         public int getId() {
@@ -76,6 +88,14 @@ public class UserResponse {
         public void setEmail(String email) {
             this.email = email;
         }
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getToken() {

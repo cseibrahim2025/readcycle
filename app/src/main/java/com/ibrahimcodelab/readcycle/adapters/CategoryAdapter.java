@@ -51,6 +51,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.bookRecycler.setAdapter(adapter);
     }
 
+    public void setCategories(List<CategoryResponse> categories){
+        this.categories.clear();
+        this.categories.addAll(categories);
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return categories.size();

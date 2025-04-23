@@ -1,43 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="@dimen/_110sdp"
+    android:layout_height="@dimen/_210sdp"
     android:orientation="vertical"
-    android:padding="8dp"
     android:layout_marginEnd="8dp"
     android:background="@drawable/book_item_bg">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/ivBookImage"
-        android:layout_width="120dp"
-        android:layout_height="160dp"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="6dp"
         fresco:placeholderImage="@drawable/book_placeholder"
         fresco:failureImage="@drawable/book_placeholder"
-        fresco:roundedCornerRadius="8dp"
-        fresco:actualImageScaleType="centerCrop" />
+        fresco:roundedCornerRadius="@dimen/_4sdp"
+        fresco:actualImageScaleType="fitXY"
+        android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
+        android:text="অ্যামেইজড বাই দ্য কুরআন"
+        android:fontFamily="@font/kalpurush"
+        android:layout_marginStart="@dimen/_6sdp"
         android:maxLines="2"
-        android:textSize="14sp"
+        android:textSize="@dimen/_11ssp"
         android:ellipsize="end"
-        android:paddingTop="6dp" />
+        android:paddingTop="4dp" />
 
     <TextView
         android:id="@+id/tvPostedBy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textColor="@color/gray" />
+        android:textSize="@dimen/_9ssp"
+        android:textColor="@color/gray"
+        android:fontFamily="@font/poppins_regular"
+        android:text="নোমান আলী খান"
+        android:layout_marginStart="@dimen/_6sdp"/>
 
-    <TextView
-        android:id="@+id/tvCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textColor="@color/gray" />
 </LinearLayout>

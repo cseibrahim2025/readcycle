@@ -55,7 +55,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             ivBookImage = itemView.findViewById(R.id.ivBookImage);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvPostedBy = itemView.findViewById(R.id.tvPostedBy);
-            tvCategory = itemView.findViewById(R.id.tvCategory);
         }
     }
 
@@ -71,7 +70,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         Book book = books.get(position);
 
         holder.tvTitle.setText(book.title);
-        holder.tvPostedBy.setText("Posted by: " + book.user.name);
+        holder.tvPostedBy.setText(book.user.name);
 
         Uri imageUri = Uri.parse(book.getPhotoPath());
         holder.ivBookImage.setImageURI(imageUri);

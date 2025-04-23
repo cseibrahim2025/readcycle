@@ -1,6 +1,5 @@
 package com.ibrahimcodelab.readcycle.fragments;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,21 +11,23 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.ibrahimcodelab.readcycle.R;
-import com.ibrahimcodelab.readcycle.activities.MainActivity;
-import com.ibrahimcodelab.readcycle.activities.auth.LoginActivity;
 import com.ibrahimcodelab.readcycle.dao.BookRequest;
 import com.ibrahimcodelab.readcycle.models.Category;
+import com.ibrahimcodelab.readcycle.models.UserResponse;
 import com.ibrahimcodelab.readcycle.networking.ApiClient;
 import com.ibrahimcodelab.readcycle.networking.ApiResponse;
 import com.ibrahimcodelab.readcycle.networking.ApiService;
 import com.ibrahimcodelab.readcycle.utils.Constants;
+import com.ibrahimcodelab.readcycle.utils.UserSession;
 
 import org.aviran.cookiebar2.CookieBar;
 
@@ -43,14 +44,25 @@ public class ProfileFragment extends Fragment {
     private List<Category> categories = new ArrayList<>();
     private ArrayAdapter<String> categoryAdapter;
 
+    private UserResponse.User user;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-
         view.findViewById(R.id.btn_add_book).setOnClickListener(v -> openAddBookDialog());
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        user = new UserSession(getContext()).getUser().getUser();
+
+        TextView txtUserName = view.findViewById(R.id.txt_name);
+        txtUserName.setText(user.getName());
     }
 
     private void openAddBookDialog() {
@@ -87,9 +99,9 @@ public class ProfileFragment extends Fragment {
             int categoryId = categories.get(selectedPosition).getId();
             BookRequest bookRequest = new BookRequest(
                     title,
-                    null,
+                    image,
                     categoryId,
-                    1,
+                    user.getId(),
                     description
             );
             addBookToServer(bookRequest);
