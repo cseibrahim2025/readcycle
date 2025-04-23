@@ -68,7 +68,7 @@ public class SwapRequestsFragment extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Update Swap Status");
 
-        String[] statuses = {"pending","accepted","rejected"};
+        String[] statuses = {"pending","accepted","declined"};
 
         builder.setItems(statuses, (dialog, which) -> {
             String selectedStatus = statuses[which];

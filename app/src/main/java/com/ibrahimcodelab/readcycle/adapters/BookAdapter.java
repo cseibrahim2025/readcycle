@@ -38,8 +38,8 @@ import retrofit2.Response;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
 
-    private List<Book> books;
-    private Context context;
+    private final List<Book> books;
+    private final Context context;
 
     public BookAdapter(List<Book> books, Context context) {
         this.books = books;
@@ -48,7 +48,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
 
     public static class BookViewHolder extends RecyclerView.ViewHolder {
         SimpleDraweeView ivBookImage;
-        TextView tvTitle, tvPostedBy, tvCategory;
+        TextView tvTitle, tvPostedBy;
 
         public BookViewHolder(View itemView) {
             super(itemView);

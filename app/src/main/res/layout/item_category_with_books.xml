@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:background="#DF2634"
         android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_2sdp"
         android:layout_marginVertical="@dimen/_4sdp"/>
 
     <androidx.recyclerview.widget.RecyclerView

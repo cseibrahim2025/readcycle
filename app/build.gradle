@@ -60,4 +60,7 @@ dependencies {
 
     //Cookiebar
     implementation 'org.aviran.cookiebar2:cookiebar2:1.1.5'
+
+    // Material Dialog Library
+    implementation 'dev.shreyaspatil.MaterialDialog:MaterialDialog:2.2.3'
 }

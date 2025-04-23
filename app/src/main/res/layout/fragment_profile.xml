@@ -214,9 +214,12 @@
                 android:layout_width="@dimen/_18sdp"
                 android:layout_height="@dimen/_18sdp"
                 android:layout_alignParentStart="true"
-                android:src="@drawable/ic_exit" />
+                android:src="@drawable/ic_exit"
+                app:tint="@color/red_400"
+                tools:ignore="UseAppTint" />
 
             <TextView
+                android:id="@+id/txtLogOut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -224,13 +227,8 @@
                 android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:text="Log Out"
+                android:textColor="@color/red_400"
                 android:textSize="@dimen/_14ssp" />
-
-            <ImageView
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_arrow" />
 
         </RelativeLayout>
 

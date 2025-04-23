@@ -1,75 +1,129 @@
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/_8sdp"
-    android:backgroundTint="@android:color/white">
+    android:backgroundTint="@android:color/white"
+    app:strokeColor="@color/color_white_overlay"
+    app:cardElevation="@dimen/_2sdp"
+    android:layout_margin="@dimen/_4sdp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/_12sdp">
+        android:paddingTop="@dimen/_20sdp">
 
-        <!-- Book Swap Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="8dp">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txt_book_title_1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Your Book"
-                android:textAppearance="?attr/textAppearanceBody1"
-                android:textColor="@color/color_theme"
-                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="@dimen/_110sdp"
+                android:layout_height="@dimen/_210sdp"
+                android:background="@drawable/book_item_bg"
+                android:orientation="vertical">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/imgOfferedBook"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="6dp"
+                    fresco:actualImageScaleType="fitXY"
+                    fresco:failureImage="@drawable/book_placeholder"
+                    fresco:placeholderImage="@drawable/book_placeholder"
+                    fresco:roundedCornerRadius="@dimen/_4sdp" />
+
+                <TextView
+                    android:id="@+id/txtTitleOfferedBook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/kalpurush"
+                    android:maxLines="2"
+                    android:paddingTop="4dp"
+                    android:text="অ্যামেইজড বাই দ্য কুরআন"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtOfferedBy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="নোমান আলী খান"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_9ssp" />
+
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/img_swap_icon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_marginHorizontal="12dp"
+                android:layout_marginHorizontal="@dimen/_8sdp"
                 android:src="@drawable/ic_swap" />
 
-            <TextView
-                android:id="@+id/txt_book_title_2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Requested Book"
-                android:textAppearance="?attr/textAppearanceBody1"
-                android:textColor="@color/color_theme"
-                android:textStyle="bold" />
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:fresco="http://schemas.android.com/apk/res-auto"
+                android:layout_width="@dimen/_110sdp"
+                android:layout_height="@dimen/_210sdp"
+                android:background="@drawable/book_item_bg"
+                android:orientation="vertical">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/imgRequestedBook"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="6dp"
+                    fresco:actualImageScaleType="fitXY"
+                    fresco:failureImage="@drawable/book_placeholder"
+                    fresco:placeholderImage="@drawable/book_placeholder"
+                    fresco:roundedCornerRadius="@dimen/_4sdp" />
+
+                <TextView
+                    android:id="@+id/txtTitleRequestedBook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/kalpurush"
+                    android:maxLines="2"
+                    android:paddingTop="4dp"
+                    android:text="অ্যামেইজড বাই দ্য কুরআন"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtRequestedTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="নোমান আলী খান"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_9ssp" />
+
+            </LinearLayout>
         </LinearLayout>
-
-        <!-- Request Info Section -->
-        <TextView
-            android:id="@+id/txt_requested_by"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="4dp"
-            android:text="Requested by"
-            android:textAppearance="?attr/textAppearanceBody2"/>
-
-        <TextView
-            android:id="@+id/txt_offered_by"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="4dp"
-            android:text="Offered by"
-            android:textAppearance="?attr/textAppearanceBody2"/>
-
-        <TextView
-            android:id="@+id/txt_status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Status"
-            android:textAppearance="?attr/textAppearanceBody2" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_status"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_20sdp"
+        android:text="Status"
+        android:gravity="center_vertical"
+        android:background="@color/orange_400"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_20sdp"
+        android:textAppearance="?attr/textAppearanceBody2" />
+
 </com.google.android.material.card.MaterialCardView>

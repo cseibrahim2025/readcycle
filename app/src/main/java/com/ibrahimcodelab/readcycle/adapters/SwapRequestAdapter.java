@@ -1,14 +1,17 @@
 package com.ibrahimcodelab.readcycle.adapters;
 
 import android.annotation.SuppressLint;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.ibrahimcodelab.readcycle.R;
 import com.ibrahimcodelab.readcycle.models.SwapResponse;
 
@@ -49,23 +52,38 @@ public class SwapRequestAdapter extends RecyclerView.Adapter<SwapRequestAdapter.
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView title1, title2, status, user, offeredBy;
+        SimpleDraweeView imgBookOffered, imgBookRequested;
+        TextView txtTitleBookOffered, txtTitleBookRequested;
+        TextView txtNameOfferedBy, txtNameRequestedTo, status;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title1 = itemView.findViewById(R.id.txt_book_title_1);
-            title2 = itemView.findViewById(R.id.txt_book_title_2);
-            user = itemView.findViewById(R.id.txt_requested_by);
-            offeredBy = itemView.findViewById(R.id.txt_offered_by);
+
+            imgBookOffered = itemView.findViewById(R.id.imgOfferedBook);
+            imgBookRequested = itemView.findViewById(R.id.imgRequestedBook);
+
+            txtTitleBookOffered = itemView.findViewById(R.id.txtTitleOfferedBook);
+            txtTitleBookRequested = itemView.findViewById(R.id.txtTitleRequestedBook);
+
+            txtNameOfferedBy = itemView.findViewById(R.id.txtOfferedBy);
+            txtNameRequestedTo = itemView.findViewById(R.id.txtRequestedTo);
+
             status = itemView.findViewById(R.id.txt_status);
         }
 
         public void bind(SwapResponse.SwapRequestData item, OnItemClickListener listener) {
-            title1.setText(item.getBookOffered().getTitle());
-            title2.setText(item.getBookRequested().getTitle());
-            user.setText("Requested by: " + item.getRequester().getName());
-            offeredBy.setText("Offered to: " + item.getBookRequested().getUser().getName());
+
+            imgBookOffered.setImageURI(Uri.parse(item.getBookOffered().getPhotoPath()));
+            imgBookRequested.setImageURI(Uri.parse(item.getBookRequested().getPhotoPath()));
+
+            txtTitleBookOffered.setText(item.getBookOffered().getTitle());
+            txtTitleBookRequested.setText(item.getBookRequested().getTitle());
+
+            txtNameOfferedBy.setText(item.getRequester().getName());
+            txtNameRequestedTo.setText(item.getBookRequested().getUser().getName());
+
             status.setText("Status: " + item.getStatus());
+            status.setBackgroundColor(ContextCompat.getColor(itemView.getContext(), item.getStatus().equals("accepted") ? R.color.green_200 : item.getStatus().equals("declined") ? R.color.red_200 : R.color.orange_200));
 
             itemView.setOnClickListener(v -> listener.onItemClick(item));
         }
